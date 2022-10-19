@@ -1,0 +1,4 @@
+name = "GeneralizedJacksonSim"
+uuid = "df424a3e-d657-40a3-8954-6b89f15a3cf0"
+authors = ["Nicholas Chay <nichay9787@gmail.com>"]
+version = "0.1.0"

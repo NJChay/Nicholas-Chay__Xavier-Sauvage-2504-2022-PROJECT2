@@ -12,19 +12,19 @@ end
 
 
 tp1 = plot(p_star_grid, TSSMQL.(qs[1]), 
-        xlabel = "ρ*", ylabel = "TSSMQL", title="Scenario 1",
+        xlabel = "ρ*", ylabel = "TSSMQL", title="Scenario 1 Theory",
         label = false, lw = 2, c = :black)#, xlim = (0,1),ylim=(0,20))
 
 tp2 = plot(p_star_grid, TSSMQL.(qs[2]), 
-        xlabel = "ρ*", ylabel = "TSSMQL", title="Scenario 2",
+        xlabel = "ρ*", ylabel = "TSSMQL", title="Scenario 2 Theory",
         label = false, lw = 2, c = :black)#, xlim = (0,1),ylim=(0,20))
 
 tp3 = plot(p_star_grid, TSSMQL.(qs[3]), 
-        xlabel = "ρ*", ylabel = "TSSMQL", title="Scenario 3",
+        xlabel = "ρ*", ylabel = "TSSMQL", title="Scenario 3 Theory",
         label = false, lw = 2, c = :black)#, xlim = (0,1),ylim=(0,20))
 
 tp4 = plot(p_star_grid, TSSMQL.(qs[4]), 
-        xlabel = "ρ*", ylabel = "TSSMQL", title="Scenario 4",
+        xlabel = "ρ*", ylabel = "TSSMQL", title="Scenario 4 Theory",
         label = false, lw = 2, c = :black)#, xlim = (0,1),ylim=(0,20))
 
 plot(tp1,tp2,tp3,tp4)

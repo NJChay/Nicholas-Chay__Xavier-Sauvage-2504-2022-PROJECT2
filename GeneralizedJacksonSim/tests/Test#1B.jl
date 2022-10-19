@@ -1,9 +1,20 @@
+include("c:\\Users\\User\\OneDrive\\MATH2504\\Proj2\\Nicholas-Chay__Xavier-Sauvage-2504-2022-PROJECT2\\GeneralizedJacksonSim\\src\\Task2.jl")
+
+using Plots
+
+p_star=0.1:0.01:0.9
+p_nets1=[]
+
+[push!(p_nets1,set_scenario(scenario1,p)) for p in p_star]
+
+
+
+
 #100 time
 TSSMQL1_100=[]
 [push!(TSSMQL1_100,sim_net(net,max_time=10^2,warm_up_time=10)) for net in p_nets1]
 
 ARE1_100=abs.((TSSMQL1_100.-TSSMQL.(qs[1]))./TSSMQL.(qs[1]))
-include("Task2.jl")
 
 
 

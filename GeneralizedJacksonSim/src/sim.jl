@@ -62,7 +62,7 @@ struct EndOfServiceEvent <: Event
 end
 
 
-function sim_net(net::NetworkParameters; max_time = 10^3, warm_up_time = 10^2, seed::Int64 = 42)
+function sim_net(net::NetworkParameters; max_time = 10^3, warm_up_time = 10^2, seed::Int64 = 42, Test2::Int64=0)
 
 
     priority=[]
@@ -74,15 +74,15 @@ function sim_net(net::NetworkParameters; max_time = 10^3, warm_up_time = 10^2, s
         if time> warm_up_time
         push!(times, time)
         push!(states, copy(state.number_in_queues))
-        #[push!(priority,ev.event) for ev in queue]
+        [push!(priority,ev.event) for ev in queue]
         end
         return nothing 
     end
 
 
     function process_event(time::Float64, state::State, ls_event::LogStateEvent)
-        println("Logging state at time $time.")
-        println(state.number_in_queues)
+        #println("Logging state at time $time.")
+        #println(state.number_in_queues)
         return []
     end
 
@@ -146,7 +146,7 @@ end;
     # First dispatch of customers
     function process_event(time::Float64, state::State, ::NewArrivals)
         new_timed_events = TimedEvent[]
-        for i in 1:length(state.number_in_queues)
+        for i in 1:net.L
             if net.α_vector[i] > 0
         
                 push!(new_timed_events,TimedEvent(RecurArrivals(i),time+ 1/net.α_vector[i]))
@@ -161,7 +161,6 @@ end;
         new_timed_events = TimedEvent[]
         push!(new_timed_events,TimedEvent(RecurArrivals(i),time + 1/net.α_vector[i]))
         push!(new_timed_events,TimedEvent(ArrivalEvent(i),time))
-        
         return new_timed_events
     end
 
@@ -204,8 +203,8 @@ end;
         if state.number_in_queues[i] ≥ 1
             push!(new_timed_events, TimedEvent(EndOfServiceEvent(i), time + rand(rate_scv_gamma(net.μ_vector[i],net.c_s)))) 
         end
-
         return new_timed_events
+    
     end
 
     simulate(QueueState(zeros(net.L)), TimedEvent(NewArrivals(),0.0),max_time=float(max_time), callback=record)
@@ -214,8 +213,12 @@ end;
     #create_anim(times,states)
 
     TSSMQL = sum(sum(states)./length(states))
-
-    return TSSMQL
+    if Test2==1
+        output=priority
+    else
+        output=TSSMQL
+    end 
+    return output
 end;
 
 function create_anim(times,states)

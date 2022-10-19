@@ -11,34 +11,36 @@ p_nets1,p_nets2,p_nets3,p_nets4=[],[],[],[]
 
 
 TSSMQL1=[]
-[push!(TSSMQL1,sim_net(net,max_time=10^3,warm_up_time=10^2)) for net in p_nets1]
+[push!(TSSMQL1,sim_net(net)) for net in p_nets1]
 
 TSSMQL2=[]
 [push!(TSSMQL2,sim_net(net)) for net in p_nets2]
 
+
 TSSMQL3=[]
 [push!(TSSMQL3,sim_net(net)) for net in p_nets3]
+
 
 TSSMQL4=[]
 [push!(TSSMQL4,sim_net(net)) for net in p_nets4]
 
 
 
-p1 = plot(p_star, TSSMQL1, 
-        xlabel = "ρ*", ylabel = "TSSMQL", title="Scenario 1",
+pl1 = plot(p_star, TSSMQL1, 
+        xlabel = "ρ*", ylabel = "TSSMQL", title="Scenario 1 Sim",
         label = false, lw = 2, c = :black)
     
-p2 = plot(p_star, TSSMQL2, 
-        xlabel = "ρ*", ylabel = "TSSMQL", title="Scenario 2",
+pl2 = plot(p_star, TSSMQL2, 
+        xlabel = "ρ*", ylabel = "TSSMQL", title="Scenario 2 Sim",
         label = false, lw = 2, c = :black)
 
-p3 = plot(p_star, TSSMQL3, 
-        xlabel = "ρ*", ylabel = "TSSMQL", title="Scenario 3",
+pl3 = plot(p_star, TSSMQL3, 
+        xlabel = "ρ*", ylabel = "TSSMQL", title="Scenario 3 Sim",
         label = false, lw = 2, c = :black)
 
-p4 = plot(p_star, TSSMQL4, 
-        xlabel = "ρ*", ylabel = "TSSMQL", title="Scenario 4",
+pl4 = plot(p_star, TSSMQL4, 
+        xlabel = "ρ*", ylabel = "TSSMQL", title="Scenario 4 Sim",
         label = false, lw = 2, c = :black)
     
     
-plot(p1,p2,p3,p4) 
+plot(pl1,pl2,pl3,pl4) 

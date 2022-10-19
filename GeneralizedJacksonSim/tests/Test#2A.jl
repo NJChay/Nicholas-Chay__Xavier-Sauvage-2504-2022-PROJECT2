@@ -1,6 +1,9 @@
 
+println("\nTesting arrival rates of different scenarios\n")
+
+
 function sim_arrivals(scenario)
-    total_events = sim_net(scenario)
+    total_events = sim_net(scenario,max_time=10^4,Test2=1)
     arrivals=[]
 
     for ev in total_events
