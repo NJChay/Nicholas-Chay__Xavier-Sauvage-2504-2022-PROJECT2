@@ -1,4 +1,14 @@
-include("c:\\Users\\User\\OneDrive\\MATH2504\\Proj2\\Nicholas-Chay__Xavier-Sauvage-2504-2022-PROJECT2\\GeneralizedJacksonSim\\src\\Task2.jl")
+
+
+p_star_grid =0.1:0.01:0.9
+
+qs=[[set_scenario(s,p,1.0) for p in p_star_grid] for s in [scenario1,scenario2,scenario3,scenario4]]
+
+function TSSMQL(net::NetworkParameters)
+    λ_base = (I - net.P') \ net.α_vector #Solve the traffic equations
+    ρ_base = λ_base ./ net.μ_vector #Determine the load ρ  
+    return sum(ρ_base ./ (1 .-ρ_base)) 
+end
 
 using Plots
 
