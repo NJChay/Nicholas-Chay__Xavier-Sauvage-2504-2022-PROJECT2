@@ -3,8 +3,14 @@ include("c:\\Users\\User\\OneDrive\\MATH2504\\Proj2\\Nicholas-Chay__Xavier-Sauva
 include("c:\\Users\\User\\OneDrive\\MATH2504\\Proj2\\Nicholas-Chay__Xavier-Sauvage-2504-2022-PROJECT2\\GeneralizedJacksonSim\\src\\Task2.jl")
 include("c:\\Users\\User\\OneDrive\\MATH2504\\Proj2\\Nicholas-Chay__Xavier-Sauvage-2504-2022-PROJECT2\\GeneralizedJacksonSim\\tests\\All_tests.jl")
 
-#scenario 1 plots used as intermediate output 
-#~4 mins to run 
+
+#sim file contains the simulation engine and makes use of all files given in the a2 spec 
+#GeneralizedJacksonSim is where the module is defined 
+
+
+#only scenario 1 plots used as intermediate output 
+
+#~5 mins to run 
 
 plot(tp1,#theory TSSMQL
 pl1,#simulation TSSMQL
